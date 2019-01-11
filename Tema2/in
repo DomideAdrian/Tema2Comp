@@ -1,0 +1,13 @@
+PROGRAM Acasa 
+VAR casa : INTEGER;
+masa : INTEGER;
+scaun : INTEGER
+BEGIN
+masa := 122 - 1;
+casa := masa;
+WRITE(casa);
+READ(scaun);
+WRITE(casa);
+FOR casa := 5 TO 10 DO masa := masa + 1
+END
+

@@ -1,4 +1,4 @@
-PROGRAM Acasa 
+PROGRAM Program1
 VAR casa : INTEGER;
 masa : INTEGER;
 scaun : INTEGER

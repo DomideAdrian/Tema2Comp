@@ -1,0 +1,19 @@
+PROGRAM Program2
+VAR x : INTEGER;
+y : INTEGER;
+z : INTEGER;
+t : INTEGER
+BEGIN
+x := 122 - 100;
+z := 1;
+y := x + z;
+READ(t);
+z := t * x;
+WRITE(z);
+FOR x := 5 TO 10 DO
+BEGIN
+y := y + 1;
+z := z * z;
+t := t DIV 2
+END
+END

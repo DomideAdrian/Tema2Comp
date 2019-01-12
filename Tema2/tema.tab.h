@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 105 "tema.y" /* yacc.c:1909  */
+#line 106 "tema.y" /* yacc.c:1909  */
 
 typedef struct punct { int x,y,z; } PUNCT;
 
@@ -82,7 +82,7 @@ typedef struct punct { int x,y,z; } PUNCT;
 
 union YYSTYPE
 {
-#line 109 "tema.y" /* yacc.c:1909  */
+#line 110 "tema.y" /* yacc.c:1909  */
 
 	int val;
 	char* sir;

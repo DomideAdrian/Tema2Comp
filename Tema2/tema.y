@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 int yylex();
@@ -12,8 +13,8 @@ char msg[80];
 class TNODE
     {
       public:
- 	int valoare;
-	char* nume;
+ 	int val;
+	char* sir;
 	
 	TNODE* next;
 	
@@ -35,9 +36,9 @@ class TNODE
 
     TNODE::TNODE(char* n, int v)
     {
-	this->nume = new char[strlen(n) + 1];
-	strcpy(this->nume,n);
-	this->valoare = v;
+	this->sir = new char[strlen(n) + 1];
+	strcpy(this->sir,n);
+	this->val = v;
 	this->next = NULL;
     }
 
@@ -52,7 +53,7 @@ class TNODE
 	TNODE* tmp = TNODE::head;
 	while(tmp != NULL)
 	{
-	   if(strcmp(tmp->nume,n) == 0)
+	   if(strcmp(tmp->sir,n) == 0)
 		return 1;
 	   tmp = tmp->next;
 	}
@@ -78,8 +79,8 @@ class TNODE
 	TNODE* tmp = TNODE::head;
 	while(tmp != NULL)
 	{
-	   if(strcmp(tmp->nume,n) == 0)
-		return tmp->valoare;
+	   if(strcmp(tmp->sir,n) == 0)
+		return tmp->val;
 	   tmp = tmp->next;
 	}
         return -1;
@@ -90,9 +91,9 @@ class TNODE
 	TNODE* tmp = TNODE::head;
 	while(tmp!=NULL)
 	{
-	    if(strcmp(tmp->nume,n) == 0)
+	    if(strcmp(tmp->sir,n) == 0)
 	    {
-		tmp->valoare = v;
+		tmp->val = v;
 	    }
 	    tmp = tmp->next;
 	}
@@ -116,8 +117,8 @@ typedef struct punct { int x,y,z; } PUNCT;
 %token TCOMMA TEQUAL TPLUS TMINUS TMUL TDIV TLPAREN TRPAREN 
 %token TREAD TWRITE TFOR TDO TTO TIDENTIFIER TINTVAL TERROR
 
-%type <val> TINTVAL factor term exp
-%type <sir> TIDENTIFIER id_list
+%type <val> TINTVAL term exp factor
+%type <sir> TIDENTIFIER id_list 
 
 %left TPLUS TMINUS
 %left TMUL TDIV
@@ -188,7 +189,27 @@ type: 		TINTEGER
 
 id_list:	TIDENTIFIER { $$ = $1; }
 		|
-		id_list TCOMMA TIDENTIFIER { $$ = $3; }
+		id_list TCOMMA TIDENTIFIER
+		{
+		  if(list != NULL)
+		  {
+	            if(list->exists($3) == 0)
+	            {
+			list->add($3);
+		    }
+		    else
+		    {
+			sprintf(msg,"%d:%d Eroare semantica: Declaratii multiple pentru variabila %s!",@1.first_line, @1.first_column, $3);
+	    		yyerror(msg);
+	    		YYERROR;
+		    }
+                  }
+		  else
+		  {
+		        list = new TNODE();
+		        list->add($3);
+		  }
+		}
 		;
 
 stmt_list:	stmt	

@@ -1,0 +1,9 @@
+PROGRAM Program4
+VAR a : INTEGER;
+b : INTEGER;
+c : INTEGER;
+d : INTEGER;
+a : INTEGER
+BEGIN
+b := 10;
+END

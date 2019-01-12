@@ -1,0 +1,19 @@
+PROGRAM Program3
+VAR a : INTEGER;
+b : INTEGER;
+c : INTEGER;
+d : INTEGER;
+i : INTEGER
+BEGIN
+a := 100 DIV 50;
+b := 100;
+c := 2 + b;
+READ(d);
+b := b * d;
+WRITE(b);
+FOR i := 0 TO 3 DO
+BEGIN
+b := b * c;
+c := c DIV 0
+END
+END

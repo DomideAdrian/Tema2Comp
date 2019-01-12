@@ -1,0 +1,16 @@
+PROGRAM Program4
+VAR a : INTEGER;
+b : INTEGER;
+c : INTEGER;
+d : INTEGER;
+e : INTEGER
+BEGIN
+a := 10;
+FOR c := 1 TO a DO
+BEGIN
+b := b + 1;
+b := 2 * b;
+WRITE(c);
+WRITE(d)
+END
+END

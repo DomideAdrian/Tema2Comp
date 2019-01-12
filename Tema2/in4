@@ -1,9 +1,7 @@
 PROGRAM Program4
 VAR a : INTEGER;
-b : INTEGER;
-c : INTEGER;
-d : INTEGER;
-e : INTEGER
+b , c: INTEGER;
+d , e: INTEGER
 BEGIN
 a := 10;
 FOR c := 1 TO a DO

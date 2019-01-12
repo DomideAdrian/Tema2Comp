@@ -162,7 +162,7 @@ dec:		id_list TCOLON type
 type: 		TINTEGER
 		;
 
-id_list:	TIDENTIFIER { $$ = $1; }
+id_list:	TIDENTIFIER 
 		|
 		id_list TCOMMA TIDENTIFIER
 		{
@@ -205,16 +205,13 @@ assign:		TIDENTIFIER TEQUAL exp
 		{
 		  if(list != NULL)
 	          {
-		    if(list->exists($1) == 1)
-	            { 
-			list->setValue($1, $3);
-		    }
-		    else
+		    if(list->exists($1) == 0)
 		    {
 			sprintf(msg,"%d:%d Eroare semantica: Variabila %s nu este declarata!",@1.first_line, @1.first_column, $1);
 	    		yyerror(msg);
 	    		YYERROR;
 		    }
+		    else list->setValue($1,0);
                   }
 		  else
 		  {
@@ -227,16 +224,16 @@ assign:		TIDENTIFIER TEQUAL exp
 
 exp:		term 
 		|
-		exp TPLUS term { $$ = $1 + $3; }
+		exp TPLUS term 
 		|
-		exp TMINUS term { $$ = $1 - $3; }
+		exp TMINUS term 
 		;
 
 term:		factor 
 		|
-		term TMUL factor { $$ = $1 * $3; }
+		term TMUL factor
 		|
-		term TDIV factor 
+		term TDIV factor
 		{ 
 		  if($3 == 0)
 		  {
@@ -266,9 +263,9 @@ factor:		TIDENTIFIER
 		  }
 		}
 		|
-		TINTVAL	{ $$ = $1; }
+		TINTVAL	
 		|
-		TLPAREN exp TRPAREN { $$ = $2; }
+		TLPAREN exp TRPAREN { $$ = $2;}
 		;
 
 read:		TREAD TLPAREN id_list TRPAREN

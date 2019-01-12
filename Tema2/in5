@@ -13,5 +13,5 @@ FOR b2:=1 TO b1 DO
 BEGIN
 b3:=b3-b2
 END;
-WRITE(b3)
+WRITE(b1)
 END

@@ -103,14 +103,10 @@ class TNODE
 
 %}
 
-%code requires {
-typedef struct punct { int x,y,z; } PUNCT;
-}
 
 %union{
 	int val;
 	char* sir;
-	PUNCT p;
 }
 
 %token TPROGRAM TVAR TBEGIN TEND TSEMICOLON TCOLON TINTEGER
@@ -133,27 +129,6 @@ prog: 	     	TPROGRAM prog_name TVAR dec_list TBEGIN stmt_list TEND
 	       	;
  
 prog_name:   	TIDENTIFIER	
-		{  
-		   if(list != NULL)
-		   {
-			if(list->exists($1) == 1)
-			   {
-				sprintf(msg,"%d:%d Eroare semantica: Numele este deja folosit %s!",@1.first_line, @1.first_column, $1);
-	    			yyerror(msg);
-	    			YYERROR;
-			   }
-			   else 
-			   {
-			        list->add($1);
-			   	//$$ = $1;
-		           }
-                   }
-		   else
-		   {
-			list = new TNODE();
-			list->add($1);
-		   }
-		}
 		;
 
 dec_list:	dec

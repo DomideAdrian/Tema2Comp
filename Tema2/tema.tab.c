@@ -196,12 +196,6 @@ class TNODE
 #if YYDEBUG
 extern int yydebug;
 #endif
-/* "%code requires" blocks.  */
-#line 106 "tema.y" /* yacc.c:355  */
-
-typedef struct punct { int x,y,z; } PUNCT;
-
-#line 205 "tema.tab.c" /* yacc.c:355  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -239,13 +233,12 @@ typedef struct punct { int x,y,z; } PUNCT;
 
 union YYSTYPE
 {
-#line 110 "tema.y" /* yacc.c:355  */
+#line 107 "tema.y" /* yacc.c:355  */
 
 	int val;
 	char* sir;
-	PUNCT p;
 
-#line 249 "tema.tab.c" /* yacc.c:355  */
+#line 242 "tema.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -276,7 +269,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 280 "tema.tab.c" /* yacc.c:358  */
+#line 273 "tema.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -578,10 +571,10 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   129,   129,   131,   135,   159,   161,   164,   187,   190,
-     192,   215,   217,   220,   222,   224,   226,   229,   253,   255,
-     257,   260,   262,   264,   275,   294,   296,   299,   320,   349,
-     352,   372,   374
+       0,   125,   125,   127,   131,   134,   136,   139,   162,   165,
+     167,   190,   192,   195,   197,   199,   201,   204,   228,   230,
+     232,   235,   237,   239,   250,   269,   271,   274,   295,   324,
+     327,   347,   349
 };
 #endif
 
@@ -1485,39 +1478,13 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 132 "tema.y" /* yacc.c:1646  */
+#line 128 "tema.y" /* yacc.c:1646  */
     { EsteCorecta = 0; }
-#line 1491 "tema.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 4:
-#line 136 "tema.y" /* yacc.c:1646  */
-    {  
-		   if(list != NULL)
-		   {
-			if(list->exists((yyvsp[0].sir)) == 1)
-			   {
-				sprintf(msg,"%d:%d Eroare semantica: Numele este deja folosit %s!",(yylsp[0]).first_line, (yylsp[0]).first_column, (yyvsp[0].sir));
-	    			yyerror(msg);
-	    			YYERROR;
-			   }
-			   else 
-			   {
-			        list->add((yyvsp[0].sir));
-			   	//$$ = $1;
-		           }
-                   }
-		   else
-		   {
-			list = new TNODE();
-			list->add((yyvsp[0].sir));
-		   }
-		}
-#line 1517 "tema.tab.c" /* yacc.c:1646  */
+#line 1484 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 165 "tema.y" /* yacc.c:1646  */
+#line 140 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 		  {
@@ -1538,17 +1505,17 @@ yyreduce:
 		        list->add((yyvsp[-2].sir));
 		  }
 		}
-#line 1542 "tema.tab.c" /* yacc.c:1646  */
+#line 1509 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 190 "tema.y" /* yacc.c:1646  */
+#line 165 "tema.y" /* yacc.c:1646  */
     { (yyval.sir) = (yyvsp[0].sir); }
-#line 1548 "tema.tab.c" /* yacc.c:1646  */
+#line 1515 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 193 "tema.y" /* yacc.c:1646  */
+#line 168 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 		  {
@@ -1569,11 +1536,11 @@ yyreduce:
 		        list->add((yyvsp[0].sir));
 		  }
 		}
-#line 1573 "tema.tab.c" /* yacc.c:1646  */
+#line 1540 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 230 "tema.y" /* yacc.c:1646  */
+#line 205 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 	          {
@@ -1595,29 +1562,29 @@ yyreduce:
 	    		YYERROR;
 		  }
 		}
-#line 1599 "tema.tab.c" /* yacc.c:1646  */
+#line 1566 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 255 "tema.y" /* yacc.c:1646  */
+#line 230 "tema.y" /* yacc.c:1646  */
     { (yyval.val) = (yyvsp[-2].val) + (yyvsp[0].val); }
-#line 1605 "tema.tab.c" /* yacc.c:1646  */
+#line 1572 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 257 "tema.y" /* yacc.c:1646  */
+#line 232 "tema.y" /* yacc.c:1646  */
     { (yyval.val) = (yyvsp[-2].val) - (yyvsp[0].val); }
-#line 1611 "tema.tab.c" /* yacc.c:1646  */
+#line 1578 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 262 "tema.y" /* yacc.c:1646  */
+#line 237 "tema.y" /* yacc.c:1646  */
     { (yyval.val) = (yyvsp[-2].val) * (yyvsp[0].val); }
-#line 1617 "tema.tab.c" /* yacc.c:1646  */
+#line 1584 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 265 "tema.y" /* yacc.c:1646  */
+#line 240 "tema.y" /* yacc.c:1646  */
     { 
 		  if((yyvsp[0].val) == 0)
 		  {
@@ -1626,11 +1593,11 @@ yyreduce:
 	    		YYERROR;
 		  }
 		}
-#line 1630 "tema.tab.c" /* yacc.c:1646  */
+#line 1597 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 276 "tema.y" /* yacc.c:1646  */
+#line 251 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 		  {	            
@@ -1648,23 +1615,23 @@ yyreduce:
 	    		YYERROR;
 		  }
 		}
-#line 1652 "tema.tab.c" /* yacc.c:1646  */
+#line 1619 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 294 "tema.y" /* yacc.c:1646  */
+#line 269 "tema.y" /* yacc.c:1646  */
     { (yyval.val) = (yyvsp[0].val); }
-#line 1658 "tema.tab.c" /* yacc.c:1646  */
+#line 1625 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 296 "tema.y" /* yacc.c:1646  */
+#line 271 "tema.y" /* yacc.c:1646  */
     { (yyval.val) = (yyvsp[-1].val); }
-#line 1664 "tema.tab.c" /* yacc.c:1646  */
+#line 1631 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 300 "tema.y" /* yacc.c:1646  */
+#line 275 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 		  {
@@ -1683,11 +1650,11 @@ yyreduce:
 	    		YYERROR;
 		  }
                 }
-#line 1687 "tema.tab.c" /* yacc.c:1646  */
+#line 1654 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 321 "tema.y" /* yacc.c:1646  */
+#line 296 "tema.y" /* yacc.c:1646  */
     {
 		  if(list != NULL)
 		  {
@@ -1714,11 +1681,11 @@ yyreduce:
 	    		YYERROR;
 		  }
 		}
-#line 1718 "tema.tab.c" /* yacc.c:1646  */
+#line 1685 "tema.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 353 "tema.y" /* yacc.c:1646  */
+#line 328 "tema.y" /* yacc.c:1646  */
     {
 		   if(list == NULL)
 		   {
@@ -1736,11 +1703,11 @@ yyreduce:
 			}
 	           }
 		}
-#line 1740 "tema.tab.c" /* yacc.c:1646  */
+#line 1707 "tema.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1744 "tema.tab.c" /* yacc.c:1646  */
+#line 1711 "tema.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1975,7 +1942,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 377 "tema.y" /* yacc.c:1906  */
+#line 352 "tema.y" /* yacc.c:1906  */
 
 
 int main()

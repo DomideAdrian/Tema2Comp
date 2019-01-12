@@ -39,12 +39,6 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
-/* "%code requires" blocks.  */
-#line 106 "tema.y" /* yacc.c:1909  */
-
-typedef struct punct { int x,y,z; } PUNCT;
-
-#line 48 "tema.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -82,13 +76,12 @@ typedef struct punct { int x,y,z; } PUNCT;
 
 union YYSTYPE
 {
-#line 110 "tema.y" /* yacc.c:1909  */
+#line 107 "tema.y" /* yacc.c:1909  */
 
 	int val;
 	char* sir;
-	PUNCT p;
 
-#line 92 "tema.tab.h" /* yacc.c:1909  */
+#line 85 "tema.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
